@@ -5,7 +5,9 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+// import { mapGetters, mapActions } from "vuex";
+import { createNamespacedHelpers } from "vuex";
+const { mapGetters, mapActions } = createNamespacedHelpers("todosModule");
 import TodoItem from "./TodoItem";
 export default {
   components: {
@@ -14,6 +16,23 @@ export default {
   computed: {
     ...mapGetters(["todoList"]),
   },
+  methods: {
+    ...mapActions(["getTodoList"]),
+  },
+  // lỗi vì hàm beforeCreate chạy trước khi khởi tạo method
+  // beforeCreate() {
+  //   this.getTodoList();
+  // },
+  // gọi ở đây là đúng r
+  created() {
+    this.getTodoList();
+  },
+  // beforeMount() {
+  //   this.getTodoList();
+  // },
+  // mounted() {
+  //   this.getTodoList();
+  // },
 };
 </script>
 

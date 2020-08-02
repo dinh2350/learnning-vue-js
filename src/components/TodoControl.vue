@@ -6,13 +6,13 @@
       placeholder="Recipient's username"
       aria-label="Recipient's username"
       aria-describedby="button-addon2"
-      v-model="content"
+      v-model="todo"
     />
     <div class="input-group-append">
       <button
         class="btn btn-outline-secondary"
         type="button"
-        @click="addTodo(content)"
+        @click="addTodo(todo)"
       >
         Add Todo
       </button>
@@ -25,7 +25,7 @@ import { mapActions } from "vuex";
 export default {
   data() {
     return {
-      content: "",
+      todo: "",
     };
   },
   methods: {
